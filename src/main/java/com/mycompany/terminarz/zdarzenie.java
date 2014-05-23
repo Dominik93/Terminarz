@@ -15,15 +15,12 @@ import java.util.Scanner;
 public class zdarzenie {
     
     protected String godzinaPoczatek, godzinaKoniec;
-    protected String dzien, tydzien;
-    protected String zdarzenie;
+    protected String tekstZdarzenia;
     
     
-    public zdarzenie(String gP, String gK, String d, String t, String z){
+    public zdarzenie(String gP, String gK, String z){
         godzinaPoczatek = gP;
         godzinaKoniec = gK;
-        dzien = d;
-        tydzien = t;
-        zdarzenie = z;
+        tekstZdarzenia = z;
     }
 }

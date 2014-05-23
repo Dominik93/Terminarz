@@ -19,8 +19,7 @@ import javax.swing.JList;
 
 public class Terminarz extends javax.swing.JFrame {
 
-    static DefaultListModel model = new DefaultListModel();
-    
+    static DefaultListModel listModel;
     static String zaznaczonyDzien = null; // pokazuje który dzień jest zaznaczony
     static int zaznaczonyTydzien;         // pokazuje który tydzien jest zaznaczony
     
@@ -81,7 +80,7 @@ public class Terminarz extends javax.swing.JFrame {
             });
 
             jList1.setModel(new javax.swing.AbstractListModel() {
-                String[] strings = {};
+                String[] strings = { "ccc" };
                 public int getSize() { return strings.length; }
                 public Object getElementAt(int i) { return strings[i]; }
             });
@@ -165,12 +164,9 @@ public class Terminarz extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addContainerGap()))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addContainerGap())
             );
             jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,11 +225,11 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        listModel = new DefaultListModel();
         if(zaznaczonyDzien != null){
-            System.out.println(zaznaczonyDzien);
-            model.addElement("cos");
-            jList1 = new JList(model);
-            
+            listModel.addElement("cos");
+            jList1 = new JList(listModel);
+            // dodawanie elementów do listy !!
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -265,7 +261,6 @@ public class Terminarz extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         zaznaczonyTydzien = jComboBox1.getSelectedIndex() + 1;
-        System.out.println(zaznaczonyTydzien);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
