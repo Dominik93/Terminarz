@@ -115,9 +115,12 @@
         <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Tydzie&#x144; 1&quot;, &quot;Tydzie&#x144; 2&quot;, &quot;Tydzie&#x144; 3&quot;, &quot;Tydzie&#x144; 4&quot; })" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;new String[] { &#xa;&quot;Tydzie&#x144; 1&quot;, &quot;Tydzie&#x144; 2&quot;, &quot;Tydzie&#x144; 3&quot;, &quot;Tydzie&#x144; 4&quot; ,&quot;Tydzie&#x144; 5&quot;, &quot;Tydzie&#x144; 6&quot;, &quot;Tydzie&#x144; 7&quot;, &quot;Tydzie&#x144; 8&quot; ,&quot;Tydzie&#x144; 9&quot;, &quot;Tydzie&#x144; 10&quot;,&#xa;&quot;Tydzie&#x144; 11&quot;, &quot;Tydzie&#x144; 12&quot;, &quot;Tydzie&#x144; 13&quot;, &quot;Tydzie&#x144; 14&quot; ,&quot;Tydzie&#x144; 15&quot;, &quot;Tydzie&#x144; 16&quot;, &quot;Tydzie&#x144; 17&quot;, &quot;Tydzie&#x144; 18&quot; ,&quot;Tydzie&#x144; 19&quot;, &quot;Tydzie&#x144; 20&quot;,&#xa;&quot;Tydzie&#x144; 21&quot;, &quot;Tydzie&#x144; 22&quot;, &quot;Tydzie&#x144; 23&quot;, &quot;Tydzie&#x144; 24&quot; ,&quot;Tydzie&#x144; 25&quot;, &quot;Tydzie&#x144; 26&quot;, &quot;Tydzie&#x144; 27&quot;, &quot;Tydzie&#x144; 28&quot; ,&quot;Tydzie&#x144; 29&quot;, &quot;Tydzie&#x144; 30&quot;,&#xa;&quot;Tydzie&#x144; 31&quot;, &quot;Tydzie&#x144; 32&quot;, &quot;Tydzie&#x144; 33&quot;, &quot;Tydzie&#x144; 34&quot; ,&quot;Tydzie&#x144; 35&quot;, &quot;Tydzie&#x144; 36&quot;, &quot;Tydzie&#x144; 37&quot;, &quot;Tydzie&#x144; 38&quot; ,&quot;Tydzie&#x144; 39&quot;, &quot;Tydzie&#x144; 40&quot;,&#xa;&quot;Tydzie&#x144; 41&quot;, &quot;Tydzie&#x144; 42&quot;, &quot;Tydzie&#x144; 43&quot;, &quot;Tydzie&#x144; 44&quot; ,&quot;Tydzie&#x144; 45&quot;, &quot;Tydzie&#x144; 46&quot;, &quot;Tydzie&#x144; 47&quot;, &quot;Tydzie&#x144; 48&quot; ,&quot;Tydzie&#x144; 49&quot;, &quot;Tydzie&#x144; 50&quot;,&#xa;&quot;Tydzie&#x144; 51&quot;, &quot;Tydzie&#x144; 52&quot;&#xa;})" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -129,10 +132,13 @@
             <Component class="javax.swing.JList" name="jList1">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.AbstractListModel() {&#xa;    String[] strings = { &quot;Zdarzenie 1&quot;, &quot;Zdarzenie 2&quot;, &quot;Zdarzenie 3&quot;, &quot;Zdarzenie 4&quot;, &quot;Zdarzenie 5&quot; };&#xa;    public int getSize() { return strings.length; }&#xa;    public Object getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
+                  <Connection code="new javax.swing.AbstractListModel() {&#xa;    String[] strings = {};&#xa;    public int getSize() { return strings.length; }&#xa;    public Object getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
                 </Property>
                 <Property name="selectionMode" type="int" value="0"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList()"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -169,26 +175,41 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x15a;roda"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Czwartek"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pi&#x105;tek"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton6">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sobota"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton7">
           <Properties>
             <Property name="text" type="java.lang.String" value="Niedziela"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton7ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
