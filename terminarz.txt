@@ -1,0 +1,4 @@
+2;Poniedzia³ek;15:15;16:15;zd1;Tydzien 2 Poniedzia³ek chyba zaczynam wariowaæ
+2;Pi¹tek;04:58;14:15;zd2;Tydzien 2 Pi¹tek Naprawde jest coœ ze mn¹ nie tak... musze przestaæ
+6;Œroda;14:48;14:49;zd3;Tydzien 6 Œroda Po tylu dniach w koncu jestem bliski celu, byæ mozê nie zwariowa³em
+8;Sobota;01:01;10:49;zd n;Tydzien 8 Sobota W koñcu zdoby³em to co chia³em... nareszcie PIWO!

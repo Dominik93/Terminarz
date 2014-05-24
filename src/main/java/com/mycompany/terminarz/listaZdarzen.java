@@ -24,8 +24,8 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
     }
     
     @Override
-    public void dodaj(zdarzenie obiekt){
-        listaZdarzen.add(obiekt);
+    public void dodaj(zdarzenie ob){
+        listaZdarzen.add(ob);
     }
     
     @Override
