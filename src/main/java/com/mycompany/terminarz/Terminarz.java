@@ -22,7 +22,7 @@ public class Terminarz extends javax.swing.JFrame {
     static DefaultListModel listModel;
     static String zaznaczonyDzien = null; // pokazuje który dzień jest zaznaczony
     static int zaznaczonyTydzien;         // pokazuje który tydzien jest zaznaczony
-    
+    static terminy terminy = new terminy();
     /**
      * Creates new form Terminarz
      */
@@ -66,6 +66,8 @@ public class Terminarz extends javax.swing.JFrame {
         jRadioButton5 = new javax.swing.JRadioButton();
         jRadioButton6 = new javax.swing.JRadioButton();
         jRadioButton7 = new javax.swing.JRadioButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         buttonGroup1.add(jRadioButton1);
         buttonGroup1.add(jRadioButton2);
@@ -77,9 +79,20 @@ public class Terminarz extends javax.swing.JFrame {
 
         jLabel1.setText("Podaj czas zdarzenia: od");
 
+        jTextField1.setMinimumSize(new java.awt.Dimension(59, 20));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("do");
 
+        jTextField2.setMinimumSize(new java.awt.Dimension(59, 20));
+
         jLabel3.setText("Podaj tytuł zdarzenia:");
+
+        jTextField3.setMinimumSize(new java.awt.Dimension(59, 20));
 
         jLabel4.setText("Podaj opis zdarzenia: ");
 
@@ -107,26 +120,26 @@ public class Terminarz extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +175,9 @@ public class Terminarz extends javax.swing.JFrame {
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +189,7 @@ public class Terminarz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(
-            new String[] {
+            new String[] { "Wybierz tydzień",
                 "Tydzień 1", "Tydzień 2", "Tydzień 3", "Tydzień 4" ,"Tydzień 5", "Tydzień 6", "Tydzień 7", "Tydzień 8" ,"Tydzień 9", "Tydzień 10",
                 "Tydzień 11", "Tydzień 12", "Tydzień 13", "Tydzień 14" ,"Tydzień 15", "Tydzień 16", "Tydzień 17", "Tydzień 18" ,"Tydzień 19", "Tydzień 20",
                 "Tydzień 21", "Tydzień 22", "Tydzień 23", "Tydzień 24" ,"Tydzień 25", "Tydzień 26", "Tydzień 27", "Tydzień 28" ,"Tydzień 29", "Tydzień 30",
@@ -204,6 +219,11 @@ public class Terminarz extends javax.swing.JFrame {
             });
 
             jButton2.setText("Przeglądaj najbliższe zdarzenia");
+            jButton2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton2ActionPerformed(evt);
+                }
+            });
 
             jRadioButton1.setText("Poniedziałek");
             jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -254,6 +274,10 @@ public class Terminarz extends javax.swing.JFrame {
                 }
             });
 
+            jButton5.setText("Usuń zdarzenie");
+
+            jLabel5.setText("Wybierz dzień tygodnia:");
+
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
             jPanel1Layout.setHorizontalGroup(
@@ -268,13 +292,17 @@ public class Terminarz extends javax.swing.JFrame {
                         .addComponent(jRadioButton4)
                         .addComponent(jRadioButton5)
                         .addComponent(jRadioButton6)
-                        .addComponent(jRadioButton7))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(jRadioButton7)
+                        .addComponent(jLabel5))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton5))))
                     .addContainerGap())
             );
             jPanel1Layout.setVerticalGroup(
@@ -283,11 +311,14 @@ public class Terminarz extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1))
+                        .addComponent(jButton1)
+                        .addComponent(jButton5))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton2)
+                                .addComponent(jLabel5))
                             .addGap(7, 7, 7)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -334,8 +365,13 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        jDialog1.setVisible(true);
+        if(zaznaczonyDzien != null && zaznaczonyTydzien != 0){
+            jTextField1.setText(""); 
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextArea1.setText("");
+            jDialog1.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -365,16 +401,38 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        zaznaczonyTydzien = jComboBox1.getSelectedIndex() + 1;
+        zaznaczonyTydzien = jComboBox1.getSelectedIndex();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        zdarzenie temp = new zdarzenie(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextArea1.getText());
+        terminy.dodaj(zaznaczonyDzien, zaznaczonyTydzien, temp);
+        jTextField1.setText(""); 
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextArea1.setText("");
+        jDialog1.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        jTextField1.setText(""); 
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextArea1.setText("");
+        jDialog1.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        terminy.wyswietl(zaznaczonyDzien, zaznaczonyTydzien);
+        System.out.println(zaznaczonyDzien+" "+zaznaczonyTydzien);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,12 +475,14 @@ public class Terminarz extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

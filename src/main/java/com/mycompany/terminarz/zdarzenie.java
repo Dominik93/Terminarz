@@ -17,11 +17,28 @@ public class zdarzenie {
     protected String godzinaPoczatek, godzinaKoniec;
     protected String tekstZdarzenia, tytulZdarzenia;
     
+    public zdarzenie(){}
     
-    public zdarzenie(String gP, String gK, String z, String t){
+    public zdarzenie(String gP, String gK, String t, String z){
         godzinaPoczatek = gP;
         godzinaKoniec = gK;
         tekstZdarzenia = z;
         tytulZdarzenia = t;
+    }
+    
+    public void wyswietl(){
+        System.out.println(godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia + ": "+tekstZdarzenia);
+    }
+    
+    public String wyswietlString(){
+        return godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia + ": "+tekstZdarzenia;
+    }
+    
+    public void wyswietlKrotko(){
+        System.out.println(godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia);
+    }
+    
+    public String wyswietlStringKrotko(){
+        return godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia;
     }
 }

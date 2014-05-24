@@ -11,31 +11,59 @@ import java.util.ArrayList;
 /**
  *
  * @author Dominik
- */
-public class listaZdarzen{
+ */ 
+public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
     
-    protected ArrayList<zdarzenie> lista = new ArrayList<zdarzenie>();
-    protected String dzien, tydzien;
+    protected ArrayList<zdarzenie> listaZdarzen = new ArrayList<zdarzenie>();
+    protected String dzien;
+    protected int tydzien;
     
-    public listaZdarzen(String d, String t){
+    public listaZdarzen(String d, int t){
         dzien = d;
         tydzien = t;
     }
     
-    public void dodajZdarzenie(zdarzenie obiekt){
-        lista.add(obiekt);
+    @Override
+    public void dodaj(zdarzenie obiekt){
+        listaZdarzen.add(obiekt);
     }
     
-    public void usunZdarzenie(int i){
-        lista.remove(i);
+    @Override
+    public void usun(int i){
+        listaZdarzen.remove(i);
     }
     
-    public void usunZdarzenie(zdarzenie ob){
-        lista.remove(ob);
+    @Override
+    public void usun(zdarzenie ob){
+        listaZdarzen.remove(ob);
     }
     
-    public void usunWszystkieZdarzenia(){
-        lista.removeAll(lista);
+    @Override
+    public void usunWszystko(){
+        listaZdarzen.removeAll(listaZdarzen);
+    }    
+    
+    // sortuje ArrayList po godzinie początkowej a potem koncowej... taa jakby nie można było odrazu dodawać w odpowiednie miejsce xD
+    public void sortuj(){
+        zdarzenie temp = new zdarzenie();
+        for(int i = 0 ; i < listaZdarzen.size(); i++)
+            for(int j = 0 ; j < listaZdarzen.size(); j++)
+                if(listaZdarzen.get(i).godzinaPoczatek.compareTo(listaZdarzen.get(j).godzinaPoczatek) < 0){ // arg jest wiekszy
+                    temp = listaZdarzen.get(i);
+                    listaZdarzen.set(i,listaZdarzen.get(j));
+                    listaZdarzen.set(j,temp);
+                }else if(listaZdarzen.get(i).godzinaPoczatek.compareTo(listaZdarzen.get(j).godzinaPoczatek) == 0){ // arg jest mniejszy
+                    if(listaZdarzen.get(i).godzinaKoniec.compareTo(listaZdarzen.get(j).godzinaKoniec) < 0){ // arg jest wiekszy
+                    temp = listaZdarzen.get(i);
+                    listaZdarzen.set(i,listaZdarzen.get(j));
+                    listaZdarzen.set(j,temp);
+                    }
+                }
     }
     
+    public void wyswietl(){
+        for(zdarzenie ob : listaZdarzen){
+            ob.wyswietl();
+        }
+    }
 }
