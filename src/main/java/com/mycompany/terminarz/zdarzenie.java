@@ -26,19 +26,32 @@ public class zdarzenie {
         tytulZdarzenia = t;
     }
     
+    /**
+     * Wyświetla obiekt klasy zdarzenie w postaci godzinaPoczątkowa-godzinaKońcowa tytuł: teskt
+    */
     public void wyswietl(){
-        System.out.println(godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia + ": "+tekstZdarzenia);
+        System.out.println(godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia + ": " + tekstZdarzenia);
     }
     
+    /**
+     * Zwraca obiekt klasy zdarzenie jako string w postaci godzinaPoczątkowa-godzinaKońcowa tytuł: teskt
+     * @return string
+    */
     public String wyswietlString(){
-        return godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia + ": "+tekstZdarzenia;
+        return godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia + ": " + tekstZdarzenia;
     }
     
+    /**
+    * Wyświetla obiekt klasy zdarzenie w któtszej postaci godzinaPoczątkowa-godzinaKońcowa tytuł
+    */
     public void wyswietlKrotko(){
-        System.out.println(godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia);
+        System.out.println(godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia);
     }
-    
+    /**
+     * Zwraca obiekt klasy zdarzenie jako string w któtszej postaci godzinaPoczątkowa-godzinaKońcowa tytuł
+     * @return string
+    */
     public String wyswietlStringKrotko(){
-        return godzinaPoczatek +"-"+ godzinaKoniec + " " +tytulZdarzenia;
+        return godzinaPoczatek + "-" + godzinaKoniec + " " +tytulZdarzenia;
     }
 }

@@ -43,7 +43,9 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
         listaZdarzen.removeAll(listaZdarzen);
     }    
     
-    // sortuje ArrayList po godzinie początkowej a potem koncowej... taa jakby nie można było odrazu dodawać w odpowiednie miejsce xD
+    /**
+     * Sortuje liste zdarzeń po godzinie początkowej a potem koncowej... taa jakby nie można było odrazu dodawać w odpowiednie miejsce xD
+     */
     public void sortuj(){
         zdarzenie temp = new zdarzenie();
         for(int i = 0 ; i < listaZdarzen.size(); i++)
@@ -61,6 +63,9 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
                 }
     }
     
+    /**
+     * Wyświetla wszystkie zdarzzenia w danej liście zdarzeń
+     */
     public void wyswietl(){
         for(zdarzenie ob : listaZdarzen){
             ob.wyswietl();

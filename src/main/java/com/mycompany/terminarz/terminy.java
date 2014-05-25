@@ -34,6 +34,12 @@ public class terminy {
         }
     }
     
+    /**
+     * Dodaje zdarzenie do odpowiedniej listy zdrzeń 
+     * @param d - zaznaczony dzień
+     * @param t - zaznaczony tydzień
+     * @param z - obiekt klasy zdarzenie
+     */
     public void dodaj(String d, int t, zdarzenie z){
         for(listaZdarzen ob : lista){
             if (ob.dzien.equals(d) && ob.tydzien == t){
@@ -42,12 +48,20 @@ public class terminy {
         }
     }
     
+    /**
+     * Usuwa wszystkie listy zdarzeń 
+     */
     public void usun(){
         for(listaZdarzen ob : lista){
             ob.usunWszystko();
         }
     }
     
+    /**
+     * Wyświetla daną liste zdarzeń
+     * @param d - zaznaczony dzień
+     * @param t - zaznaczony tydzień
+     */
     public void wyswietl(String d, int t){
         for(listaZdarzen ob : lista){
             if (ob.dzien.equals(d) && ob.tydzien == t){
@@ -56,33 +70,45 @@ public class terminy {
         }
     }
     
+    /**
+     * Wyswietla wszsytkie listy zdarzen w terminarzu
+     */
     public void wyswietl(){
         for(listaZdarzen ob : lista){
             ob.wyswietl();
         }
     }
     
-    
+    /**
+     * Zapis całego terminarza w postaci tydzien;dzien;godzinaPoczatek;godzinaKoniec;temat;opis do pliku .txt
+     * @throws FileNotFoundException 
+     */
     public void zapisDoPliku() throws FileNotFoundException{
-        //tydzien;dzien;godzinaPoczatek;godzinaKoniec;temat;opis
+        PrintWriter zapis = null;
+        // OTWIERANIE PLIKU:
         try{
-            PrintWriter zapis = new PrintWriter("terminarz.txt");
-            for(listaZdarzen ob : lista){
-                for(int i = 0; i < ob.listaZdarzen.size(); i++){
-                    zapis.println(ob.tydzien+";"+ob.dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
-                        ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
-                        ob.listaZdarzen.get(i).tekstZdarzenia);
-                    System.out.println(ob.tydzien+";"+ob.dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
-                        ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
-                        ob.listaZdarzen.get(i).tekstZdarzenia);
-                }
-                
-            }
-            zapis.close();
-        }catch(IOException ex){
+            zapis = new PrintWriter("terminarz.txt");
+        }catch (FileNotFoundException e){
+            System.out.println("BŁĄD PRZY OTWIERANIU PLIKU!");
+            System.exit(1);
         }
+        for(listaZdarzen ob : lista){
+            for(int i = 0; i < ob.listaZdarzen.size(); i++){
+                zapis.println(ob.tydzien+";"+ob.dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
+                        ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
+                        ob.listaZdarzen.get(i).tekstZdarzenia);
+                System.out.println(ob.tydzien+";"+ob.dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
+                        ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
+                        ob.listaZdarzen.get(i).tekstZdarzenia);
+            }
+
+        }
+        zapis.close();
     }
     
+    /**
+     * Odczyt z pliku .txt do aplikacji
+     */
     public void odczytZPliku(){
         FileReader odczyt = null;
         String linia = "";
