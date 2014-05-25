@@ -7,6 +7,7 @@
 package com.mycompany.terminarz;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -26,16 +27,19 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
     @Override
     public void dodaj(zdarzenie ob){
         listaZdarzen.add(ob);
+        sortuj();
     }
     
     @Override
     public void usun(int i){
         listaZdarzen.remove(i);
+        sortuj();
     }
     
     @Override
     public void usun(zdarzenie ob){
         listaZdarzen.remove(ob);
+        sortuj();
     }
     
     @Override
@@ -71,4 +75,13 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
             ob.wyswietl();
         }
     }
+    
+    public DefaultListModel test(int t){
+        DefaultListModel listModel = new DefaultListModel();
+        for(zdarzenie ob : listaZdarzen){
+            listModel.addElement(ob.wyswietlStringKrotko());
+        }
+        return listModel;
+    }
+    
 }

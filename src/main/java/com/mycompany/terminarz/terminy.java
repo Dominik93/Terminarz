@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -77,6 +78,16 @@ public class terminy {
         for(listaZdarzen ob : lista){
             ob.wyswietl();
         }
+    }
+    
+    public DefaultListModel ustalModel(int t){
+        DefaultListModel listModel = new DefaultListModel();
+        for(listaZdarzen ob : lista){
+            if(ob.tydzien == t && ob.listaZdarzen.size() != 0){
+                listModel.add(listModel.size(), ob.test(t));
+            }
+        }
+        return listModel;
     }
     
     /**
