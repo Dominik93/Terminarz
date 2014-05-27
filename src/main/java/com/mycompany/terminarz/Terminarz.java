@@ -8,10 +8,12 @@ package com.mycompany.terminarz;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import java.util.Iterator;
 
 /**
  *
@@ -27,6 +29,8 @@ public class Terminarz extends javax.swing.JFrame {
     static String zaznaczonyDzien = null; // pokazuje który dzień jest zaznaczony
     static int zaznaczonyTydzien;         // pokazuje który tydzien jest zaznaczony
     static terminy terminy = new terminy(); // lista wszystkich terminów
+    Iterator<zdarzenie> iteratorZdarzen ;
+    
     /**
      * Creates new form Terminarz
      */
@@ -211,6 +215,11 @@ public class Terminarz extends javax.swing.JFrame {
         });
 
         jButton11.setText("Następne zdarzenie");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -545,6 +554,9 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Lista<zdarzenie> listaZdarzen = new Lista<zdarzenie>();
+        listaZdarzen = terminy.iteruj(zaznaczonyDzien, zaznaczonyTydzien);
+        iteratorZdarzen = listaZdarzen.iterator();
         jDialog2.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -597,8 +609,16 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        
+        System.out.println(jList1.getSelectedValue());
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        if(iteratorZdarzen.hasNext()) {
+             // pobieramy je i wyświetlamy je na ekranie
+            jLabel6.setText(iteratorZdarzen.next().wyswietlString());
+        }else{jLabel3.setText("");}
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments

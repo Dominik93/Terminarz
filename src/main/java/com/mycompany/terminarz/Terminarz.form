@@ -259,6 +259,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nast&#x119;pne zdarzenie"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

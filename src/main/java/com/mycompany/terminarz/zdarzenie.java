@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class zdarzenie {
     
     protected String godzinaPoczatek, godzinaKoniec;
-    protected String tekstZdarzenia, tytulZdarzenia;
+    protected String tekstZdarzenia, tytulZdarzenia , tekstZdarzeniaKrotki;
     
     public zdarzenie(){}
     
@@ -24,6 +24,9 @@ public class zdarzenie {
         godzinaKoniec = gK;
         tekstZdarzenia = z;
         tytulZdarzenia = t;
+        if(z.length() > 15) tekstZdarzeniaKrotki = z.substring(0, 10)+"...";
+        else tekstZdarzeniaKrotki = z;
+        
     }
     
     /**
@@ -51,7 +54,49 @@ public class zdarzenie {
      * Zwraca obiekt klasy zdarzenie jako string w któtszej postaci godzinaPoczątkowa-godzinaKońcowa tytuł
      * @return string
     */
-    public String wyswietlStringKrotko(){
-        return godzinaPoczatek + "-" + godzinaKoniec + " " +tytulZdarzenia;
+    public String wyswietlStringKrotko(String d){
+        return d + ": " + godzinaPoczatek + "-" + godzinaKoniec + " " +tytulZdarzenia + ": "+ tekstZdarzeniaKrotki;
     }
+    
+    
+    public void setGodzinaPoczatek(String godzinaPoczatek) {
+        this.godzinaPoczatek = godzinaPoczatek;
+    }
+
+    public void setGodzinaKoniec(String godzinaKoniec) {
+        this.godzinaKoniec = godzinaKoniec;
+    }
+
+    public void setTekstZdarzenia(String tekstZdarzenia) {
+        this.tekstZdarzenia = tekstZdarzenia;
+    }
+
+    public void setTytulZdarzenia(String tytulZdarzenia) {
+        this.tytulZdarzenia = tytulZdarzenia;
+    }
+
+    public void setTekstZdarzeniaKrotki(String tekstZdarzeniaKrotki) {
+        this.tekstZdarzeniaKrotki = tekstZdarzeniaKrotki;
+    }
+
+    public String getGodzinaPoczatek() {
+        return godzinaPoczatek;
+    }
+
+    public String getGodzinaKoniec() {
+        return godzinaKoniec;
+    }
+
+    public String getTekstZdarzenia() {
+        return tekstZdarzenia;
+    }
+
+    public String getTytulZdarzenia() {
+        return tytulZdarzenia;
+    }
+
+    public String getTekstZdarzeniaKrotki() {
+        return tekstZdarzeniaKrotki;
+    }
+    
 }

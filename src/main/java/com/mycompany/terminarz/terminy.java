@@ -57,7 +57,7 @@ public class terminy {
             ob.usunWszystko();
         }
     }
-    
+        
     /**
      * Wyświetla daną liste zdarzeń
      * @param d - zaznaczony dzień
@@ -80,11 +80,20 @@ public class terminy {
         }
     }
     
+    /**
+     * Zwraca model listy dla jList na dany tydzien
+     * @param t - zaznaczony tydzień
+     * @return 
+     */
     public DefaultListModel ustalModel(int t){
         DefaultListModel listModel = new DefaultListModel();
+        String [] stringList;
         for(listaZdarzen ob : lista){
             if(ob.tydzien == t && ob.listaZdarzen.size() != 0){
-                listModel.add(listModel.size(), ob.test(t));
+                stringList = ob.test(t);
+                for(int i = 0; i < ob.listaZdarzen.size(); i ++){
+                    listModel.addElement(stringList[i]);
+                }
             }
         }
         return listModel;
@@ -157,4 +166,33 @@ public class terminy {
             System.exit(3);
         }
     }
+    
+    public Lista<zdarzenie> iteruj(String d, int t){
+        Lista<zdarzenie> listaZdarzen = new Lista<zdarzenie>();
+        boolean znalazl = false;
+        int stop = 0;
+        for(listaZdarzen ob : lista){
+            if (znalazl || (ob.dzien.equals(d) && ob.tydzien == t)){
+                znalazl = true;
+                ArrayList<zdarzenie> lista  = ob.getListaZdarzen();
+                for(int i = 0; i < lista.size() ; i++){
+                    listaZdarzen.wstawNaPoczatek(lista.get(i));
+                    stop++;
+                    if(stop == 10) break;
+                }
+            }
+            if(stop == 10) break;
+        }
+        return listaZdarzen;
+    }
+    
+    public void setLista(ArrayList<listaZdarzen> lista) {
+        this.lista = lista;
+    }
+
+    public ArrayList<listaZdarzen> getLista() {
+        return lista;
+    }
+    
+    
 }

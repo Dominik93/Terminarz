@@ -14,7 +14,7 @@ import javax.swing.DefaultListModel;
  * @author Dominik
  */ 
 public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
-    
+
     protected ArrayList<zdarzenie> listaZdarzen = new ArrayList<zdarzenie>();
     protected String dzien;
     protected int tydzien;
@@ -76,12 +76,39 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
         }
     }
     
-    public DefaultListModel test(int t){
-        DefaultListModel listModel = new DefaultListModel();
+    public String[] test(int t){
+        String [] stringList = new String[listaZdarzen.size()];
+        int i = 0;
         for(zdarzenie ob : listaZdarzen){
-            listModel.addElement(ob.wyswietlStringKrotko());
+            stringList[i] = ob.wyswietlStringKrotko(dzien);
+            i++;
         }
-        return listModel;
+        return stringList;
     }
+    
+    public void setListaZdarzen(ArrayList<zdarzenie> listaZdarzen) {
+        this.listaZdarzen = listaZdarzen;
+    }
+
+    public void setDzien(String dzien) {
+        this.dzien = dzien;
+    }
+
+    public void setTydzien(int tydzien) {
+        this.tydzien = tydzien;
+    }
+
+    public ArrayList<zdarzenie> getListaZdarzen() {
+        return listaZdarzen;
+    }
+
+    public String getDzien() {
+        return dzien;
+    }
+
+    public int getTydzien() {
+        return tydzien;
+    }
+    
     
 }
