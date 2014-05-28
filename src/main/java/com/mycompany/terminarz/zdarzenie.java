@@ -15,25 +15,33 @@ import java.util.Scanner;
 public class zdarzenie {
     
     protected String godzinaPoczatek, godzinaKoniec;
-    protected String tekstZdarzenia, tytulZdarzenia , tekstZdarzeniaKrotki;
+    protected String tekstZdarzenia, tytulZdarzenia, tekstZdarzeniaKrotki;
+    protected String dzien;
     
     public zdarzenie(){}
-    
-    public zdarzenie(String gP, String gK, String t, String z){
+    /**
+     * Konstruktor
+     * @param gP - godzina początwka
+     * @param gK - godzina koncowa
+     * @param t - tytuł
+     * @param z - tekst
+     * @param d - dzieć
+     */
+    public zdarzenie(String gP, String gK, String t, String z, String d){
         godzinaPoczatek = gP;
         godzinaKoniec = gK;
         tekstZdarzenia = z;
         tytulZdarzenia = t;
+        dzien = d;
         if(z.length() > 15) tekstZdarzeniaKrotki = z.substring(0, 10)+"...";
         else tekstZdarzeniaKrotki = z;
-        
     }
     
     /**
      * Wyświetla obiekt klasy zdarzenie w postaci godzinaPoczątkowa-godzinaKońcowa tytuł: teskt
     */
     public void wyswietl(){
-        System.out.println(godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia + ": " + tekstZdarzenia);
+        System.out.println(dzien + " " + godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia + ": " + tekstZdarzenia);
     }
     
     /**
@@ -41,21 +49,21 @@ public class zdarzenie {
      * @return string
     */
     public String wyswietlString(){
-        return godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia + ": " + tekstZdarzenia;
+        return dzien + " " + godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia + ": " + tekstZdarzenia;
     }
     
     /**
     * Wyświetla obiekt klasy zdarzenie w któtszej postaci godzinaPoczątkowa-godzinaKońcowa tytuł
     */
     public void wyswietlKrotko(){
-        System.out.println(godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia);
+        System.out.println(dzien+" "+godzinaPoczatek + "-" + godzinaKoniec + " " + tytulZdarzenia);
     }
     /**
      * Zwraca obiekt klasy zdarzenie jako string w któtszej postaci godzinaPoczątkowa-godzinaKońcowa tytuł
      * @return string
     */
-    public String wyswietlStringKrotko(String d){
-        return d + ": " + godzinaPoczatek + "-" + godzinaKoniec + " " +tytulZdarzenia + ": "+ tekstZdarzeniaKrotki;
+    public String wyswietlStringKrotko(){
+        return dzien + ": " + godzinaPoczatek + "-" + godzinaKoniec + " " +tytulZdarzenia + ": "+ tekstZdarzeniaKrotki;
     }
     
     

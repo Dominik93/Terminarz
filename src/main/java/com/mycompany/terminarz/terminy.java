@@ -20,30 +20,22 @@ import javax.swing.DefaultListModel;
  */
 public class terminy {
     
-    private final String[] dni = { "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela" };
     protected ArrayList<listaZdarzen> lista = new ArrayList<listaZdarzen>();
     
     public terminy(){
-        int j = 0, k = 1;
-        for(int i = 1; i < (53*7); i++){
-           lista.add(new listaZdarzen(dni[j], k));
-           j++;
-           if (j == 7){ 
-               j = 0; 
-               k++;
-           }
+        for(int i = 1; i < 53; i++){
+           lista.add(new listaZdarzen(i));
         }
     }
     
     /**
      * Dodaje zdarzenie do odpowiedniej listy zdrzeń 
-     * @param d - zaznaczony dzień
      * @param t - zaznaczony tydzień
      * @param z - obiekt klasy zdarzenie
      */
-    public void dodaj(String d, int t, zdarzenie z){
+    public void dodaj(int t, zdarzenie z){
         for(listaZdarzen ob : lista){
-            if (ob.dzien.equals(d) && ob.tydzien == t){
+            if (ob.tydzien == t){
                 ob.dodaj(z);
             }
         }
@@ -57,15 +49,27 @@ public class terminy {
             ob.usunWszystko();
         }
     }
+    
+    /**
+     * Usuwa zdarzenie o indeksie i z danego tygodnia
+     * @param t - zaznaczony tydzien
+     * @param i - indeks zdarzenia
+     */
+    public void usun(int t, int i){
+        for(listaZdarzen ob : lista){
+            if (ob.tydzien == t){
+                ob.usun(i);
+            }
+        }
+    }
         
     /**
      * Wyświetla daną liste zdarzeń
-     * @param d - zaznaczony dzień
      * @param t - zaznaczony tydzień
      */
-    public void wyswietl(String d, int t){
+    public void wyswietl(int t){
         for(listaZdarzen ob : lista){
-            if (ob.dzien.equals(d) && ob.tydzien == t){
+            if (ob.tydzien == t){
                 ob.wyswietl();
             }
         }
@@ -83,14 +87,14 @@ public class terminy {
     /**
      * Zwraca model listy dla jList na dany tydzien
      * @param t - zaznaczony tydzień
-     * @return 
+     * @return DefaultListModel
      */
     public DefaultListModel ustalModel(int t){
         DefaultListModel listModel = new DefaultListModel();
         String [] stringList;
         for(listaZdarzen ob : lista){
-            if(ob.tydzien == t && ob.listaZdarzen.size() != 0){
-                stringList = ob.test(t);
+            if(ob.tydzien == t && !ob.listaZdarzen.isEmpty()){
+                stringList = ob.model(t);
                 for(int i = 0; i < ob.listaZdarzen.size(); i ++){
                     listModel.addElement(stringList[i]);
                 }
@@ -114,10 +118,10 @@ public class terminy {
         }
         for(listaZdarzen ob : lista){
             for(int i = 0; i < ob.listaZdarzen.size(); i++){
-                zapis.println(ob.tydzien+";"+ob.dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
+                zapis.println(ob.tydzien+";"+ob.listaZdarzen.get(i).dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
                         ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
                         ob.listaZdarzen.get(i).tekstZdarzenia);
-                System.out.println(ob.tydzien+";"+ob.dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
+                System.out.println(ob.tydzien+";"+ob.listaZdarzen.get(i).dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
                         ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
                         ob.listaZdarzen.get(i).tekstZdarzenia);
             }
@@ -148,8 +152,8 @@ public class terminy {
                 String[] list = linia.split(";");
                 System.out.println(list);
                 for(listaZdarzen ob : lista){
-                    if (ob.dzien.equals(list[1]) && ob.tydzien == Integer.parseInt(list[0])){
-                        ob.dodaj(new zdarzenie(list[2], list[3], list[4], list[5]));
+                    if (ob.tydzien == Integer.parseInt(list[0])){
+                        ob.dodaj(new zdarzenie(list[2], list[3], list[4], list[5],list[1]));
                     }
                 }
             }
@@ -167,12 +171,12 @@ public class terminy {
         }
     }
     
-    public Lista<zdarzenie> iteruj(String d, int t){
+    public Lista<zdarzenie> iteruj(int t){
         Lista<zdarzenie> listaZdarzen = new Lista<zdarzenie>();
         boolean znalazl = false;
         int stop = 0;
         for(listaZdarzen ob : lista){
-            if (znalazl || (ob.dzien.equals(d) && ob.tydzien == t)){
+            if (znalazl || (ob.tydzien == t)){
                 znalazl = true;
                 ArrayList<zdarzenie> lista  = ob.getListaZdarzen();
                 for(int i = 0; i < lista.size() ; i++){

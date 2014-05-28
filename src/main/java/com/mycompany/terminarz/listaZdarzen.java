@@ -16,11 +16,12 @@ import javax.swing.DefaultListModel;
 public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
 
     protected ArrayList<zdarzenie> listaZdarzen = new ArrayList<zdarzenie>();
-    protected String dzien;
     protected int tydzien;
-    
-    public listaZdarzen(String d, int t){
-        dzien = d;
+    /**
+     * Konstruktor
+     * @param t - zaznaczony tydzien 
+     */
+    public listaZdarzen(int t){
         tydzien = t;
     }
     
@@ -48,23 +49,38 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
     }    
     
     /**
-     * Sortuje liste zdarzeń po godzinie początkowej a potem koncowej... taa jakby nie można było odrazu dodawać w odpowiednie miejsce xD
+     * Sortuje liste zdarzeń po dniu, godzinie początkowej a potem koncowej... taa jakby nie można było odrazu dodawać w odpowiednie miejsce xD
      */
     public void sortuj(){
         zdarzenie temp = new zdarzenie();
+        String tabStr[] = { "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela" };
+        int tabInt[] = {1,2,3,4,5,6,7};
+        int dzienJ=0, dzienI=0;
         for(int i = 0 ; i < listaZdarzen.size(); i++)
-            for(int j = 0 ; j < listaZdarzen.size(); j++)
-                if(listaZdarzen.get(i).godzinaPoczatek.compareTo(listaZdarzen.get(j).godzinaPoczatek) < 0){ // arg jest wiekszy
+            for(int j = 0 ; j < listaZdarzen.size(); j++){
+                for(int k = 0; k < tabStr.length; k++)
+                    if(listaZdarzen.get(i).dzien.equals(tabStr[k])) dzienI = k + 1;
+                for(int k = 0; k < tabStr.length; k++)
+                    if(listaZdarzen.get(j).dzien.equals(tabStr[k])) dzienJ = k + 1;
+                
+                if(dzienI < dzienJ){
                     temp = listaZdarzen.get(i);
                     listaZdarzen.set(i,listaZdarzen.get(j));
                     listaZdarzen.set(j,temp);
-                }else if(listaZdarzen.get(i).godzinaPoczatek.compareTo(listaZdarzen.get(j).godzinaPoczatek) == 0){ // arg jest mniejszy
+                }
+                else if(dzienI == dzienJ && listaZdarzen.get(i).godzinaPoczatek.compareTo(listaZdarzen.get(j).godzinaPoczatek) < 0){ // arg jest wiekszy
+                    temp = listaZdarzen.get(i);
+                    listaZdarzen.set(i,listaZdarzen.get(j));
+                    listaZdarzen.set(j,temp);
+                }
+                else if(listaZdarzen.get(i).godzinaPoczatek.compareTo(listaZdarzen.get(j).godzinaPoczatek) == 0){ // arg jest mniejszy
                     if(listaZdarzen.get(i).godzinaKoniec.compareTo(listaZdarzen.get(j).godzinaKoniec) < 0){ // arg jest wiekszy
                     temp = listaZdarzen.get(i);
                     listaZdarzen.set(i,listaZdarzen.get(j));
                     listaZdarzen.set(j,temp);
                     }
                 }
+            }
     }
     
     /**
@@ -76,11 +92,16 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
         }
     }
     
-    public String[] test(int t){
+    /**
+     * Funkcja zwaraca tablice stringów w której są wartości do wyświetlenia w jList
+     * @param t - zaznaczony tydzine
+     * @return String[]
+     */
+    public String[] model(int t){
         String [] stringList = new String[listaZdarzen.size()];
         int i = 0;
         for(zdarzenie ob : listaZdarzen){
-            stringList[i] = ob.wyswietlStringKrotko(dzien);
+            stringList[i] = ob.wyswietlStringKrotko();
             i++;
         }
         return stringList;
@@ -90,20 +111,12 @@ public class listaZdarzen implements interfaceZdarzen<zdarzenie>{
         this.listaZdarzen = listaZdarzen;
     }
 
-    public void setDzien(String dzien) {
-        this.dzien = dzien;
-    }
-
     public void setTydzien(int tydzien) {
         this.tydzien = tydzien;
     }
 
     public ArrayList<zdarzenie> getListaZdarzen() {
         return listaZdarzen;
-    }
-
-    public String getDzien() {
-        return dzien;
     }
 
     public int getTydzien() {

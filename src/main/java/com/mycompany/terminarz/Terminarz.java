@@ -20,9 +20,6 @@ import java.util.Iterator;
  * @author Dominik
  */
 
-
-
-
 public class Terminarz extends javax.swing.JFrame {
 
     static DefaultListModel listModel;
@@ -294,7 +291,7 @@ public class Terminarz extends javax.swing.JFrame {
                 }
             });
 
-            jButton2.setText("Przeglądaj najbliższe zdarzenia");
+            jButton2.setText("Przeglądaj wszystkie zdarzenia");
             jButton2.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton2ActionPerformed(evt);
@@ -529,8 +526,8 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        zdarzenie temp = new zdarzenie(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextArea1.getText());
-        terminy.dodaj(zaznaczonyDzien, zaznaczonyTydzien, temp);
+        zdarzenie temp = new zdarzenie(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextArea1.getText(),zaznaczonyDzien);
+        terminy.dodaj(zaznaczonyTydzien, temp);
         jTextField1.setText(""); 
         jTextField2.setText("");
         jTextField3.setText("");
@@ -555,7 +552,7 @@ public class Terminarz extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Lista<zdarzenie> listaZdarzen = new Lista<zdarzenie>();
-        listaZdarzen = terminy.iteruj(zaznaczonyDzien, zaznaczonyTydzien);
+        listaZdarzen = terminy.iteruj(zaznaczonyTydzien);
         iteratorZdarzen = listaZdarzen.iterator();
         jDialog2.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -577,21 +574,7 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        terminy.dodaj("Poniedziałek", 1, new zdarzenie("1", "2", "Poniedziałek", "1"));
-        terminy.dodaj("Poniedziałek", 1, new zdarzenie("1", "2", "Poniedziałek", "1"));
-        terminy.dodaj("Poniedziałek", 1, new zdarzenie("1", "2", "Poniedziałek", "1"));
-        terminy.dodaj("Poniedziałek", 1, new zdarzenie("1", "2", "Poniedziałek", "1"));
-        terminy.dodaj("Środa", 1, new zdarzenie("1", "2", "Środa", "1"));
-        terminy.dodaj("Poniedziałek", 2, new zdarzenie("1", "2", "Poniedziałek", "2"));
-        terminy.dodaj("Poniedziałek", 2, new zdarzenie("1", "2", "Poniedziałek", "2"));
-        terminy.dodaj("Wtorek", 2, new zdarzenie("1", "2", "Wtorek", "2"));
-        terminy.dodaj("Wtorek", 2, new zdarzenie("1", "2", "Wtorek", "2"));
-        terminy.dodaj("Poniedziałek", 2, new zdarzenie("1", "2", "Poniedziałek", "2"));
-        terminy.dodaj("Poniedziałek", 1, new zdarzenie("1", "2", "Poniedziałek", "1"));
-        terminy.dodaj("Środa", 8, new zdarzenie("1", "2", "Środa", "8"));
-        terminy.dodaj("Środa", 8, new zdarzenie("1", "2", "Środa", "8"));        
-        terminy.dodaj("Środa", 12, new zdarzenie("1", "2", "Środa", "12"));
-        terminy.dodaj("Środa", 48, new zdarzenie("1", "2", "Środa", "48"));   
+  
         terminy.wyswietl();
         jList1.setModel(terminy.ustalModel(zaznaczonyTydzien));
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -609,7 +592,8 @@ public class Terminarz extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        System.out.println(jList1.getSelectedValue());
+        terminy.usun(zaznaczonyTydzien,jList1.getSelectedIndex());
+        jList1.setModel(terminy.ustalModel(zaznaczonyTydzien));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
