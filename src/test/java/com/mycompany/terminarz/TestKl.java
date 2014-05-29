@@ -29,4 +29,13 @@ public class TestKl {
         listaZdarzen ob = new listaZdarzen("poniedziałek",2);
         assertEquals(ob.getDzien(),"poniedziałek");
     }
+        @Test
+    public void testZdarzenieCalosc(){
+        zdarzenie ob = new zdarzenie("10:00","12:45","test","testujemy poprawne działanie");
+        assertEquals(ob.wyswietlString(),"10:00-12:45 test: testujemy poprawne działanie");
+    }
+    @Test
+    public void testPass() {
+        assertTrue(true);
+    }
 }
