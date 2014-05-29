@@ -6,8 +6,6 @@
 
 package com.mycompany.terminarz;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Dominik

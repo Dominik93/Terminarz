@@ -194,5 +194,12 @@ public class terminy {
         return lista;
     }
     
+    /**
+     *
+     * @return
+     */
+    public String[] getDni(){
+        return dni;
+    }
     
 }
