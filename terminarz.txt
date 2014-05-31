@@ -1,0 +1,15 @@
+1;Poniedzia쿮k;1;2;Poniedzia쿮k;1
+1;Poniedzia쿮k;1;2;Poniedzia쿮k;1
+1;Poniedzia쿮k;1;2;Poniedzia쿮k;1
+1;Poniedzia쿮k;1;2;Poniedzia쿮k;1
+1;Poniedzia쿮k;1;2;Poniedzia쿮k;1
+1;똱oda;1;2;똱oda;1
+2;Poniedzia쿮k;1;2;Poniedzia쿮k;2
+2;Poniedzia쿮k;1;2;Poniedzia쿮k;2
+2;Poniedzia쿮k;1;2;Poniedzia쿮k;2
+2;Wtorek;1;2;Wtorek;2
+2;Wtorek;1;2;Wtorek;2
+8;똱oda;1;2;똱oda;8
+8;똱oda;1;2;똱oda;8
+12;똱oda;1;2;똱oda;12
+48;똱oda;1;2;똱oda;48
