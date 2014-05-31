@@ -23,10 +23,20 @@ public class terminy {
     
     protected ArrayList<listaZdarzen> lista = new ArrayList<listaZdarzen>();
     
-    public terminy(){
+    private static terminy singleton = null;
+    private terminy(){
         for(int i = 1; i < 53; i++){
            lista.add(new listaZdarzen(i));
         }
+    }
+    
+    public static terminy wezInstancje(){
+        synchronized(terminy.class){
+            if(singleton==null){
+                singleton = new terminy();
+            }
+        }
+        return singleton;
     }
     
     /**
@@ -77,7 +87,7 @@ public class terminy {
      * Wyświetla daną liste zdarzeń
      * @param t  zaznaczony tydzień
      */
-    public void wyswietl(int t){
+    protected void wyswietl(int t){
         for(listaZdarzen ob : lista){
             if (ob.tydzien == t){
                 ob.wyswietl();
@@ -88,7 +98,7 @@ public class terminy {
     /**
      * Wyswietla wszsytkie listy zdarzen w terminarzu
      */
-    public void wyswietl(){
+    protected void wyswietl(){
         for(listaZdarzen ob : lista){
             ob.wyswietl();
         }
@@ -131,9 +141,9 @@ public class terminy {
                 zapis.println(ob.tydzien+";"+ob.listaZdarzen.get(i).dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
                         ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
                         ob.listaZdarzen.get(i).tekstZdarzenia);
-                System.out.println(ob.tydzien+";"+ob.listaZdarzen.get(i).dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
-                        ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
-                        ob.listaZdarzen.get(i).tekstZdarzenia);
+               // System.out.println(ob.tydzien+";"+ob.listaZdarzen.get(i).dzien+";"+ob.listaZdarzen.get(i).godzinaPoczatek+";"+
+                       // ob.listaZdarzen.get(i).godzinaKoniec+";"+ob.listaZdarzen.get(i).tytulZdarzenia+";"+
+                       // ob.listaZdarzen.get(i).tekstZdarzenia);
             }
 
         }
@@ -202,11 +212,11 @@ public class terminy {
         Iterator<zdarzenie> iteratorZdarzen = listaZdarzen.iterator();
         return iteratorZdarzen;
     }
-    public void setLista(ArrayList<listaZdarzen> lista) {
+    protected void setLista(ArrayList<listaZdarzen> lista) {
         this.lista = lista;
     }
 
-    public ArrayList<listaZdarzen> getLista() {
+    protected ArrayList<listaZdarzen> getLista() {
         return lista;
     }
     

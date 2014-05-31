@@ -6,17 +6,17 @@
 
 package com.mycompany.kontroler;
 
+import com.mycompany.model.dekoratorZdarzenia;
 import com.mycompany.model.terminy;
 import com.mycompany.model.zdarzenie;
-import com.mycompany.model.dekoratorZdarzenia;
 import com.mycompany.widok.widok;
 
 import java.awt.event.*;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Dominik Ślusarz, Radosław Zając, Roger Woźniak, Aleksandra Worhacz, Daniel Stanek 
@@ -135,6 +135,18 @@ public class kontroler {
     
     class button3Listener implements ActionListener { // ok jDialog1
         public void actionPerformed(ActionEvent e) {
+            
+            if( !(( widok.getTextField1().startsWith("0") ) || ( widok.getTextField1().startsWith("1") ) || ( widok.getTextField1().startsWith("2") )) || 
+                    (widok.getTextField1().startsWith("2") && !( (widok.getTextField1().startsWith("0", 1)) || (widok.getTextField1().startsWith("1", 1))
+                    || (widok.getTextField1().startsWith("2", 1)) || (widok.getTextField1().startsWith("3", 1)) || (widok.getTextField1().startsWith("4", 1) ))) ){
+                JOptionPane.showMessageDialog(null,"Błędnie podana godzina od!!");
+            }
+            else if( !(( widok.getTextField2().startsWith("0") ) || ( widok.getTextField2().startsWith("1") ) || ( widok.getTextField2().startsWith("2") )) || 
+                    (widok.getTextField2().startsWith("2") && !( (widok.getTextField2().startsWith("0", 1)) || (widok.getTextField2().startsWith("1", 1))
+                    || (widok.getTextField2().startsWith("2", 1)) || (widok.getTextField2().startsWith("3", 1)) || (widok.getTextField2().startsWith("4", 1) ))) ){
+                JOptionPane.showMessageDialog(null,"Błędnie podana godzina do!!");
+            }
+            else{
             model.dodaj(zaznaczonyTydzien, new zdarzenie(widok.getTextField1(), widok.getTextField2(),widok.getTextField3(),widok.getTextArea1(),zaznaczonyDzien));
             widok.setTextField1("");
             widok.setTextField2("");
@@ -142,6 +154,7 @@ public class kontroler {
             widok.setTextArea1("");
             widok.setVisibleJDialog1(false);
             widok.setList(model.ustalModel(zaznaczonyTydzien));
+            }
         }
     }
     

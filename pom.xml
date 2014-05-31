@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany</groupId>
     <artifactId>Terminarz</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v2</version>
     <packaging>jar</packaging>
     <name>Terminarz</name>
     <properties>
@@ -24,7 +24,7 @@
 					<target>1.7</target>
 					<archive>
 						<manifest>
-							<mainClass>com.mycompany.terminarz.Terminarz</mainClass>
+							<mainClass>com.mycompany.terminarzmvc.main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

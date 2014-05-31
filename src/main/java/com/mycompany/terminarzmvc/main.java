@@ -18,7 +18,7 @@ public class main {
     
     public static void main(String[] args) {
         // TODO code application logic here
-         terminy model = new terminy();
+         terminy model = terminy.wezInstancje();//new terminy();
          widok widok = new widok(model);
          kontroler kontroler = new kontroler(model, widok);
         
