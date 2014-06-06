@@ -17,10 +17,15 @@ import com.mycompany.model.terminy;
 public class main {
     
     public static void main(String[] args) {
-        // TODO code application logic here
-         terminy model = terminy.wezInstancje();//new terminy();
-         widok widok = new widok(model);
-         kontroler kontroler = new kontroler(model, widok);
+        // TODO code application logic here\
+        /*
+        * Tworzę instancję terminów przypisaną do referencji typu Object
+        * Następnie castuję ją do terminy i używam funkcji zawartej w 
+        * klasie terminy (PoliInst())
+        */
+         Object model = terminy.wezInstancje();//new terminy();
+         widok widok = new widok(((terminy)model).PoliInst());
+         kontroler kontroler = new kontroler(((terminy)model).PoliInst(), widok);
         
          widok.setVisible(true);
         
