@@ -219,6 +219,12 @@ public class terminy {
     protected ArrayList<listaZdarzen> getLista() {
         return lista;
     }
-    
+    /**
+     * Funkcja zwracająca instancję
+     * Niezbędna do prezentacji prostego polimorfizmu
+     */
+    public terminy PoliInst(){
+        return this;
+    }
     
 }
